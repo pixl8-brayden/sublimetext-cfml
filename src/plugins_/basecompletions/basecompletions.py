@@ -184,9 +184,9 @@ def load_completions():
     for funct in sorted(completions_data["cfml_functions"].keys()):
         completions["cfml_functions"]["basic"].append(
             sublime.CompletionItem(
-                funct,
+                funct[0].upper() + funct[1:],
                 "cfml.fn",
-                funct + "($0)",
+                funct[0].upper() + funct[1:] + "($0)",
                 sublime.COMPLETION_FORMAT_SNIPPET,
                 kind=(sublime.KIND_ID_FUNCTION, "f", "function"),
                 details=completions_data["cfml_functions"][funct][0],
@@ -194,9 +194,9 @@ def load_completions():
         )
         completions["cfml_functions"]["required"].append(
             sublime.CompletionItem(
-                funct,
+                funct[0].upper() + funct[1:],
                 "cfml.fn",
-                funct + completions_data["cfml_functions"][funct][1][0],
+                funct[0].upper() + funct[1:] + completions_data["cfml_functions"][funct][1][0],
                 sublime.COMPLETION_FORMAT_SNIPPET,
                 kind=(sublime.KIND_ID_FUNCTION, "f", "function"),
                 details=completions_data["cfml_functions"][funct][0],
@@ -204,16 +204,16 @@ def load_completions():
         )
         completions["cfml_functions"]["full"].append(
             sublime.CompletionItem(
-                funct,
+                funct[0].upper() + funct[1:],
                 "cfml.fn",
-                funct + completions_data["cfml_functions"][funct][1][1],
+                funct[0].upper() + funct[1:] + completions_data["cfml_functions"][funct][1][1],
                 sublime.COMPLETION_FORMAT_SNIPPET,
                 kind=(sublime.KIND_ID_FUNCTION, "f", "function"),
                 details=completions_data["cfml_functions"][funct][0],
             )
         )
 
-        function_names.append(funct)
+        function_names.append(funct[0].upper() + funct[1:])
 
     # function params
     completions["cfml_function_params"] = {}
